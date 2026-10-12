@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructora Pacas | M&B Remodeling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #f5a623;
+            --primary-dark: #d48806;
+            --dark: #0f0f0f;
+            --gray: #666;
+            --light: #f8f8f8;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica', 'Arial', sans-serif;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            padding: 16px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15,15,15,0.85) 0%, rgba(15,15,15,0.6) 100%),
+                        url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80') center/cover no-repeat;
+            color: #fff;
+            padding: 120px 0 80px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top, #ffffff, transparent);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(245, 166, 35, 0.15);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 28px;
+            color: #e0e0e0;
+            max-width: 600px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #b0b0b0;
+            max-width: 560px;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 32px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(245, 166, 35, 0.5);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.4);
+        }
+
+        .btn-outline:hover {
+            background: #fff;
+            color: var(--dark);
+            border-color: #fff;
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            padding: 80px 0;
+            background: #fff;
+            margin-top: -40px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            background: #fff;
+            padding: 36px 28px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            transition: all 0.4s;
+            text-align: left;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        .feature-item h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* ===== SECCIÓN ABOUT / GALERÍA ===== */
+        .about {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-header .tag {
+            display: inline-block;
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .section-header h2 {
+            font-size: 44px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            color: var(--dark);
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--gray);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 240px 240px;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: transform 0.4s;
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s;
+        }
+
+        .gallery-item:hover .caption {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+            background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&q=80');
+        }
+
+        .gallery-item:nth-child(2) {
+            background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80');
+        }
+
+        .gallery-item:nth-child(3) {
+            background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80');
+        }
+
+        .gallery-item:nth-child(4) {
+            background-image: url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80');
+        }
+
+        .gallery-item:nth-child(5) {
+            background-image: url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80');
+        }
+
+        /* ===== TESTIMONIOS ===== */
+        .testimonials {
+            padding: 100px 0;
+            background: #fff;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 36px 32px;
+            border-radius: 16px;
+            border: 1px solid #eee;
+            position: relative;
+            transition: all 0.4s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
+
+        .quote-mark {
+            font-size: 60px;
+            color: var(--primary);
+            font-family: Georgia, serif;
+            line-height: 0.5;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .testimonial-card p {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        .testimonial-card:nth-child(1) .author-avatar {
+            background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80');
+        }
+
+        .testimonial-card:nth-child(2) .author-avatar {
+            background-image: url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80');
+        }
+
+        .testimonial-card:nth-child(3) .author-avatar {
+            background-image: url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80');
+        }
+
+        .author-info .name {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .author-info .role {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+        /* ===== CONTACTO ===== */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: #fff;
+        }
+
+        .contact .section-header h2 {
+            color: #fff;
+        }
+
+        .contact .section-header p {
+            color: #b0b0b0;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .contact-details .label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 8px;
+            margin-top: 24px;
+        }
+
+        .contact-details .label:first-child {
+            margin-top: 0;
+        }
+
+        .contact-details p {
+            font-size: 16px;
+            color: #e0e0e0;
+            margin-bottom: 6px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            background: rgba(255,255,255,0.04);
+            padding: 36px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px 18px;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            transition: all 0.3s;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: #888;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 16px 32px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-form button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(245, 166, 35, 0.4);
+        }
+
+        .thank-you {
+            display: none;
+            font-size: 16px;
+            color: var(--primary);
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        /* ===== SECCIÓN YOUTUBE ===== */
+        .youtube-section {
+            padding: 80px 0;
+            background: #fff;
+            text-align: center;
+        }
+
+        .youtube-section h2 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+        }
+
+        .youtube-section p {
+            font-size: 16px;
+            color: var(--gray);
+            margin-bottom: 32px;
+        }
+
+        .youtube-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background: #FF0000;
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        .youtube-btn:hover {
+            background: #cc0000;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.45);
+        }
+
+        .youtube-btn svg {
+            width: 26px;
+            height: 26px;
+            fill: #fff;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--dark);
+            color: #888;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer span {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 48px; }
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 200px 200px 200px;
+            }
+            .gallery-item:nth-child(1) { grid-row: span 2; }
+            .contact-info { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 38px; letter-spacing: -1px; }
+            .hero h2 { font-size: 18px; }
+            .section-header h2 { font-size: 32px; }
+            .gallery {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 220px);
+            }
+            .gallery-item:nth-child(1) { grid-row: span 1; }
+            .contact-form { padding: 24px; }
+            .youtube-btn { font-size: 14px; padding: 15px 26px; }
+            .youtube-section h2 { font-size: 26px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 32px; }
+            .btn { padding: 13px 24px; font-size: 14px; }
+            .feature-item { padding: 28px 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Constructora<span>Pacas</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <span class="hero-badge">★ Constructora en Chiclayo</span>
+            <h1>Líderes en <span>rediseño</span><br>en el Área de la Bahía</h1>
+            <h2>Transformamos espacios con calidad, diseño y compromiso.</h2>
+            <p>Más de 10 años de experiencia en remodelación, construcción y diseño de interiores. Tu proyecto en las manos correctas.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">
+                    Solicita tu cotización
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#proyectos" class="btn btn-outline">Ver proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="servicios">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/></svg>
+                    </div>
+                    <h3>Financiamiento accesible</h3>
+                    <p>Planes de pago flexibles adaptados a tu presupuesto, sin complicaciones.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <h3>Consultas gratis a domicilio</h3>
+                    <p>Visitamos tu espacio sin costo para evaluar y asesorarte profesionalmente.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <h3>Servicio galardonado</h3>
+                    <p>Reconocidos por nuestra excelencia y calidad en cada proyecto entregado.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                    </div>
+                    <h3>Autorizados y asegurados</h3>
+                    <p>Contamos con todas las licencias y seguros para tu total tranquilidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA / PROYECTOS -->
+    <section class="about" id="proyectos">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Nuestro trabajo</span>
+                <h2>Proyectos que hablan por nosotros</h2>
+                <p>Cada espacio cuenta una historia. Estas son algunas de nuestras remodelaciones más recientes.</p>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item"><span class="caption">Remodelación integral - Chiclayo</span></div>
+                <div class="gallery-item"><span class="caption">Cocina moderna</span></div>
+                <div class="gallery-item"><span class="caption">Sala contemporánea</span></div>
+                <div class="gallery-item"><span class="caption">Baño de lujo</span></div>
+                <div class="gallery-item"><span class="caption">Fachada residencial</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Testimonios</span>
+                <h2>Clientes satisfechos</h2>
+                <p>La confianza de nuestros clientes es nuestro mejor respaldo.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <p>Excelente servicio de principio a fin. Cumplieron con los plazos y el resultado superó nuestras expectativas. Totalmente recomendados.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="name">David Rocha</div>
+                            <div class="role">Cliente residencial</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <p>El equipo fue muy profesional y atento a cada detalle. Nos asesoraron en todo momento y el presupuesto se respetó al 100%.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="name">Amelia Barrios</div>
+                            <div class="role">Remodelación de cocina</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <span class="quote-mark">"</span>
+                    <p>Quedamos encantados con la remodelación de nuestro hogar. La calidad de los materiales y el acabado final fueron impecables.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div class="author-info">
+                            <div class="name">Karen Sánchez</div>
+                            <div class="role">Cliente residencial</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <span class="tag">Contacto</span>
+                <h2>Platícanos tu proyecto</h2>
+                <p>Llena el formulario o llámanos para una consulta a domicilio sin compromiso.</p>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-details">
+                    <p class="label">Zonas de Servicio</p>
+                    <p>Guadalajara, Querétaro, León, Monterrey</p>
+
+                    <p class="label">Dirección</p>
+                    <p>Av. Fray Antonio Alcalde 10<br>44100 Guadalajara, Jal., México</p>
+
+                    <p class="label">Teléfono</p>
+                    <p>+52-33-12345678</p>
+
+                    <p class="label">Correo</p>
+                    <p>contacto@constructorapacas.com</p>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contactForm" onsubmit="event.preventDefault(); document.getElementById('thankYou').style.display='block'; this.style.display='none';">
+                        <input type="text" placeholder="Nombre completo" required>
+                        <input type="email" placeholder="Correo electrónico" required>
+                        <input type="tel" placeholder="Teléfono">
+                        <textarea placeholder="Cuéntanos sobre tu proyecto..." required></textarea>
+                        <button type="submit">Enviar mensaje</button>
+                    </form>
+                    <p class="thank-you" id="thankYou">✓ ¡Gracias por tu mensaje! Te contactaremos pronto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YOUTUBE -->
+    <section class="youtube-section">
+        <div class="container">
+            <h2>Mira nuestros proyectos en acción</h2>
+            <p>Suscríbete a nuestro canal y descubre el antes y después de cada obra.</p>
+            <a href="https://www.youtube.com/@contructorapacas" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="youtube-btn"
+               aria-label="Visita nuestro canal de YouTube">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                Visita nuestro canal de YouTube
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2025 <span>Constructora Pacas</span> — Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
